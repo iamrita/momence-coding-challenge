@@ -5,7 +5,8 @@ import React, { useState, useEffect } from "react";
 
 const fetchData = async() => {
   const res = await fetch("https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt")
-  console.log(res.text)
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+  console.log(res)
   return res.text
 }
 function App() {
