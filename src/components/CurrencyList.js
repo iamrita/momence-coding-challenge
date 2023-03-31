@@ -1,25 +1,47 @@
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { useQuery } from "react-query";
+import CurrencyExchange from "./CurrencyExchange";
 
+let arr = [];
 
 function CurrencyList() {
-  let arr = []
   const { isLoading, isError, data, error } = useQuery("currency", fetchData);
-  console.log(data);
-  if (!isLoading && !isError) {
-    arr = data.split("\n")
+  let currencies = [];
+  if (isLoading) {
+    return <div>Loading..</div>;
   }
-  console.log(arr)
-  //const arr = data.split("\n")
+  if (isError) {
+    return <div>Error..</div>;
+  }
+  arr = data.split("\n");
+  for (let i = 2; i < 33; i++) {
+    const parsedArray = arr[i].split("|");
+    let currencyFields = {
+      country: parsedArray[0], // Australia
+      currency: parsedArray[1], // dollar
+      amount: parseInt(parsedArray[2]), // 1
+      code: parsedArray[3], // AUD
+      rate: parseFloat(parsedArray[4]), // 14.436
+    };
+    currencies.push(currencyFields);
+  }
 
-  return arr.map((c) => <li key={c}>{c}</li>);
+  console.log(currencies);
+  return (
+    <div>
+      {currencies.map((c) => (
+        <li key={c.country}>{c.country}</li>
+      ))}
+      <CurrencyExchange />
+    </div>
+  );
 }
 
 const fetchData = async () => {
-    // workaround: keep original url here and use a browser with cors disabled
-    const res = await fetch(
-      "/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
-    );
-    return res.text();
-  };
+  // workaround: keep original url here and use a browser with cors disabled
+  const res = await fetch(
+    "/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
+  ); // add proxy in the package.json
+  return res.text();
+};
 
-  export default CurrencyList
+export default CurrencyList;
