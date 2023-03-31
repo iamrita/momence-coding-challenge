@@ -26,12 +26,18 @@ function CurrencyList() {
   }
 
   console.log(currencies);
+  let options = []
+
+  for (let i = 0; i < currencies.length; i++) {
+    options.push({value: currencies[i].country, label: currencies[i].country})
+  }
+  console.log(options)
   return (
     <div>
       {currencies.map((c) => (
         <li key={c.country}>{c.country}</li>
       ))}
-      <CurrencyExchange />
+      <CurrencyExchange options={options} />
     </div>
   );
 }
