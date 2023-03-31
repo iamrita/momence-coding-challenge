@@ -15,6 +15,7 @@ function CurrencyExchange(props) {
 
   function calculate(currObj) {
     console.log(currObj)
+    console.log(props.options)
     setFinalAmount(String(100/(parseFloat(currObj.amt))))
 
 }
