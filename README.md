@@ -11,6 +11,10 @@ Documentation: https://www.cnb.cz/en/faq/Format-of-the-foreign-exchange-market-r
 5.  Overall: Keep the code simple and the UI nice and easy to use for the user.
 
 
+Challenges:
+* Dealing with CORS: https://create-react-app.dev/docs/proxying-api-requests-in-development/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
