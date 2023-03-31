@@ -3,17 +3,19 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function CurrencyList() {
+  let arr = []
   const { isLoading, isError, data, error } = useQuery("currency", fetchData);
-  console.log(data)
+  console.log(data);
+  if (!isLoading && !isError) {
+    arr = data.split("\n")
+  }
+  console.log(arr)
+  //const arr = data.split("\n")
 
-  return (
-    <div>
-      {data}
-    </div>
-  );
+  return arr.map((c) => <li key={c}>{c}</li>);
 }
 const fetchData = async () => {
   // workaround: keep original url here and use a browser with cors disabled
@@ -28,11 +30,10 @@ const fetchData = async () => {
 function App() {
   const [exchange, showExchange] = useState(false);
 
-
   useEffect(() => {
     const handleKeyDown = async (event) => {
       showExchange(true);
-      fetchData()
+      fetchData();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -54,7 +55,7 @@ function App() {
           </p>
           <p>Press any key to begin.</p>
         </div>
-        {exchange ? <CurrencyList></CurrencyList>: <></>}
+        {exchange ? <CurrencyList></CurrencyList> : <></>}
       </div>
     </QueryClientProvider>
   );
