@@ -10,10 +10,11 @@ function CurrencyList() {
     return <div>Loading..</div>;
   }
   if (isError) {
+    console.log(error)
     return <div>Error..</div>;
   }
   arr = data.split("\n");
-  for (let i = 2; i < 33; i++) {
+  for (let i = 2; i < 33; i++) { // go from the first country to last country 
     const parsedArray = arr[i].split("|");
     let currencyFields = {
       country: parsedArray[0], // Australia
@@ -25,16 +26,13 @@ function CurrencyList() {
     currencies.push(currencyFields);
   }
 
-  let options = []
-  for (let i = 0; i < currencies.length; i++) {
-    options.push({value: currencies[i].country, label: currencies[i].country})
-  }
+
   return (
     <div>
       {currencies.map((c) => (
         <li key={c.country}>{c.country}</li>
       ))}
-      <CurrencyExchange options={options} />
+      <CurrencyExchange currencies={currencies} />
     </div>
   );
 }

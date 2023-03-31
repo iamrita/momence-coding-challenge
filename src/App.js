@@ -24,7 +24,7 @@ function App() {
         <div className="title">
           <h1>Welcome!</h1>
           <p>
-            So I heard you're planning a trip to Prague. Exciting! This is a
+            So I heard you're planning a trip abroad. Exciting! This is a
             website for <b>Czech Currency Exchange</b>. Take a look at the
             information below, to check out what the exchange rates are for
             various countries. Feel free to use the currency calculator below

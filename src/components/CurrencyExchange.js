@@ -1,22 +1,26 @@
 import {useState, React} from "react";
 import Select from "react-select";
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "blue", label: "Blue" },
-  { value: "red", label: "Red" },
-];
-
 function CurrencyExchange(props) {
   const [selectedOption, setSelectedOption] = useState("");
   const [currAmount, setCurrAmount] = useState("")
   const [finalAmount, setFinalAmount] = useState("")
 
+  let options = [] 
+  for (let i = 0; i < props.currencies.length; i++) {
+    options.push({value: props.currencies[i].country, label: props.currencies[i].country})
+  } // convert options for dropdown menu 
+
 
   function calculate(currObj) {
-    console.log(currObj)
-    console.log(props.options)
-    setFinalAmount(String(100/(parseFloat(currObj.amt))))
+    const country = currObj.country
+    const exchangeRate = props.currencies.find(c => c.country === country)
+    console.log(exchangeRate)
+    let exchangeAmount = exchangeRate.amount 
+    let rate = exchangeRate.rate
+    let floatAmt = parseFloat(currObj.amt)
+    console.log(props.currencies)
+    setFinalAmount(String((floatAmt * exchangeAmount)/rate))
 
 }
   return (
@@ -24,13 +28,13 @@ function CurrencyExchange(props) {
       <Select
         value={selectedOption}
         onChange={setSelectedOption}
-        options={props.options}
+        options={options}
       />
        <label>
-        Text input: <input value={currAmount} onChange={(e) => setCurrAmount(e.target.value)} name="myInput" />
+        Enter amount in CZK: <input value={currAmount} onChange={(e) => setCurrAmount(e.target.value)} name="myInput" />
       </label>
       <button onClick={(e) => calculate({country: selectedOption.value, amt: currAmount})}>Go</button>
-      <div>{finalAmount}</div>
+      <div>Total in {selectedOption.value} is {finalAmount}</div>
     </div>
   );
 }
