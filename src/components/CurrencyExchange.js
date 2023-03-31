@@ -5,6 +5,7 @@ function CurrencyExchange(props) {
   const [selectedOption, setSelectedOption] = useState("");
   const [currAmount, setCurrAmount] = useState("")
   const [finalAmount, setFinalAmount] = useState("")
+  const [clicked, setClicked] = useState(false)
 
   let options = [] 
   for (let i = 0; i < props.currencies.length; i++) {
@@ -13,6 +14,7 @@ function CurrencyExchange(props) {
 
 
   function calculate(currObj) {
+    setClicked(true)
     const country = currObj.country
     const exchangeRate = props.currencies.find(c => c.country === country)
     console.log(exchangeRate)
@@ -31,10 +33,13 @@ function CurrencyExchange(props) {
         options={options}
       />
        <label>
-        Enter amount in CZK: <input value={currAmount} onChange={(e) => setCurrAmount(e.target.value)} name="myInput" />
+        Enter amount in CZK: <input value={currAmount} onChange={(e) => {
+            setClicked(false)
+            setCurrAmount(e.target.value)
+        }} name="myInput" />
       </label>
       <button onClick={(e) => calculate({country: selectedOption.value, amt: currAmount})}>Go</button>
-      <div>Total in {selectedOption.value} is {finalAmount}</div>
+      {clicked ? <div>Total in {selectedOption.value} is {finalAmount}</div> : <></>}
     </div>
   );
 }
