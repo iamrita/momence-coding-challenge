@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 
 
 const fetchData = async() => {
-  const res = await fetch("https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt")
-  console.log(res)
-  return res.text
+  // workaround: keep original url here and use a browser with cors disabled 
+  const res = await fetch("/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt")
+  const body = await res.text()
+  console.log(body)
+  return body
 }
 function App() {
   const [exchange, showExchange] = useState(false);
