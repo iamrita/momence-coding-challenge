@@ -1,15 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider} from "react-query";
 import CurrencyList from "./components/CurrencyList";
 const queryClient = new QueryClient();
 
 function App() {
   const [exchange, showExchange] = useState(false);
-
   useEffect(() => {
-    const handleKeyDown = async (event) => {
+    const handleKeyDown = async () => {
       showExchange(true);
     };
     window.addEventListener("keydown", handleKeyDown);

@@ -1,5 +1,7 @@
 import { useState, React } from "react";
 import Select from "react-select";
+import "../styles/Currency.css"
+import "../App.css"
 
 function CurrencyExchange(props) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -23,11 +25,11 @@ function CurrencyExchange(props) {
     let exchangeAmount = exchangeRate.amount;
     let rate = exchangeRate.rate;
     let floatAmt = parseFloat(currObj.amt);
-    console.log(props.currencies);
     setFinalAmount(String((floatAmt * exchangeAmount) / rate));
   }
+  
   return (
-    <div>
+    <div className= "exchange">
       <Select
         value={selectedOption}
         onChange={setSelectedOption}

@@ -1,19 +1,18 @@
 .App {
- text-align: center;
 }
 
 body {
   margin: 0;
   background: #def;
   display:flex;
-  justify-content: center;
-  align-items:center;
+  flex-direction: column;
   padding:10px;
+  align-items: center;
 
 }
 
 .title {
-  width: 500px;
+  width: 600px;
   border: 2px solid black;
   border-radius: 20px;
   background: linear-gradient(#fff 10%, #f1f1f1 98%, #ccc);
@@ -21,4 +20,25 @@ body {
   margin: 20px;
   font-family: monospace;
   font-size: 18px;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.exchange {
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:20px;
+}
+
+table {
+ border-collapse: separate;
+ border-spacing: 18px;
+}
+
+thead{
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 18px;
 }

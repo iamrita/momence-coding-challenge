@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import CurrencyExchange from "./CurrencyExchange";
-
-let arr = [];
+import "../App.css";
 
 function CurrencyList() {
   const { isLoading, isError, data, error } = useQuery("currency", fetchData);
@@ -10,13 +9,14 @@ function CurrencyList() {
     return <div>Loading..</div>;
   }
   if (isError) {
-    console.log(error)
+    console.log(error);
     return <div>Error..</div>;
   }
-  arr = data.split("\n");
-  for (let i = 2; i < 33; i++) { // go from the first country to last country 
+  let arr = data.split("\n");
+  for (let i = 2; i < 33; i++) {
+    // go from the first country to last country
     const parsedArray = arr[i].split("|");
-    let currencyFields = {
+    const currencyFields = {
       country: parsedArray[0], // Australia
       currency: parsedArray[1], // dollar
       amount: parseInt(parsedArray[2]), // 1
@@ -26,12 +26,32 @@ function CurrencyList() {
     currencies.push(currencyFields);
   }
 
-
   return (
     <div>
-      {currencies.map((c) => (
-        <li key={c.country}>{c.country}</li>
-      ))}
+      <div className="title">
+        <table>
+          <thead>
+            <tr>
+              <th className="table">Country</th>
+              <th className="table">Currency</th>
+              <th className="table">Amount</th>
+              <th className="table">Code</th>
+              <th className="table">Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currencies.map((item) => (
+              <tr key={item.code}>
+                <td className="table">{item.country}</td>
+                <td className="table">{item.currency}</td>
+                <td className="table">{item.amount}</td>
+                <td className="table">{item.code}</td>
+                <td className="table">{item.rate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <CurrencyExchange currencies={currencies} />
     </div>
   );
