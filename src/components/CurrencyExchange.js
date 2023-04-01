@@ -1,7 +1,7 @@
 import { useState, React } from "react";
 import Select from "react-select";
-import "../styles/Currency.css"
-import "../App.css"
+import "../styles/Currency.css";
+import "../App.css";
 
 function CurrencyExchange(props) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -27,32 +27,37 @@ function CurrencyExchange(props) {
     let floatAmt = parseFloat(currObj.amt);
     setFinalAmount(String((floatAmt * exchangeAmount) / rate));
   }
-  
+
   return (
-    <div className= "exchange">
+    <div className="title">
+      <p><b>Country:</b></p>
       <Select
         value={selectedOption}
         onChange={setSelectedOption}
         options={options}
       />
+      <br></br>
       <label>
-        Enter amount in CZK:
+        <b>Enter amount in CZK:  </b>
         <input
           value={currAmount}
           onChange={(e) => setCurrAmount(e.target.value)}
           name="myInput"
         />
       </label>
+      <br></br>
+      <br></br>
       <button
         onClick={(e) =>
           calculate({ country: selectedOption.value, amt: currAmount })
         }
       >
-        Go
+        Convert
       </button>
       {clicked ? (
         <div>
-          Total in {selectedOption.value} is {finalAmount}
+          <br></br>
+          Total in {selectedOption.value} is <b>{finalAmount}</b>
         </div>
       ) : (
         <></>
