@@ -58,10 +58,9 @@ function CurrencyList() {
 }
 
 const fetchData = async () => {
-  // workaround: keep original url here and use a browser with cors disabled
   const res = await fetch(
     "/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
-  ); // add proxy in the package.json
+  ); // added proxy in the package.json
   return res.text();
 };
 

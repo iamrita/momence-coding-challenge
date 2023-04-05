@@ -1,6 +1,5 @@
 import { useState, React } from "react";
 import Select from "react-select";
-import "../styles/Currency.css";
 import "../App.css";
 
 function CurrencyExchange(props) {
@@ -15,13 +14,12 @@ function CurrencyExchange(props) {
       value: props.currencies[i].country,
       label: props.currencies[i].country,
     });
-  } // convert options for dropdown menu
+  }
 
   function calculate(currObj) {
     setClicked(true);
     const country = currObj.country;
     const exchangeRate = props.currencies.find((c) => c.country === country);
-    console.log(exchangeRate);
     let exchangeAmount = exchangeRate.amount;
     let rate = exchangeRate.rate;
     let floatAmt = parseFloat(currObj.amt);
@@ -30,7 +28,9 @@ function CurrencyExchange(props) {
 
   return (
     <div className="title">
-      <p><b>Country:</b></p>
+      <p>
+        <b>Country:</b>
+      </p>
       <Select
         value={selectedOption}
         onChange={setSelectedOption}
@@ -38,7 +38,7 @@ function CurrencyExchange(props) {
       />
       <br></br>
       <label>
-        <b>Enter amount in CZK:  </b>
+        <b>Enter amount in CZK: </b>
         <input
           value={currAmount}
           onChange={(e) => setCurrAmount(e.target.value)}

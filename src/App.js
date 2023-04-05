@@ -1,7 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { QueryClient, QueryClientProvider} from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import CurrencyList from "./components/CurrencyList";
 const queryClient = new QueryClient();
 
