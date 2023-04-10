@@ -18,7 +18,6 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
         <div className="title">
           <h1>Welcome!</h1>
           <p>
@@ -31,7 +30,6 @@ function App() {
           <p>Press any key to begin.</p>
         </div>
         {exchange ? <CurrencyList></CurrencyList> : <></>}
-      </div>
     </QueryClientProvider>
   );
 }

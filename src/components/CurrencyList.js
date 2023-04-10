@@ -6,7 +6,7 @@ function CurrencyList() {
   const { isLoading, isError, data, error } = useQuery("currency", fetchData);
   let currencies = [];
   if (isLoading) {
-    return <div>Loading..</div>;
+    return <div className="title">Loading..</div>;
   }
   if (isError) {
     console.log(error);
