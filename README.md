@@ -8,9 +8,9 @@ This app uses Javascript, React (+ Hooks), Styled Components, and React Query to
 2. Parses the downloaded data and clearly displays it to the user in the UI.
 3. Adds a simple form, into which the customer can enter an amount in CZK and select a currency, and after clicking a button sees the amount entered in CZK converted into the selected currency.
 
-To run the app, in the project directory run `npm start`. A gif of the working app is below: 
+To run the app, in the project directory run `npm start`. A video of the working app is below: 
 
-
+https://user-images.githubusercontent.com/8162391/230968101-c2521441-b8b9-4c66-a05a-632ae25c7783.mov
 
 
 Note: Although I have not used Typescript extensively, I am currently learning it on my own, and am excited to pick it up quickly!
