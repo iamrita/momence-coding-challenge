@@ -10,7 +10,7 @@ This app uses Javascript, React (+ Hooks), Styled Components, and React Query to
 
 To run the app, in the project directory run `npm start`. A gif of the working app is below: 
 
-![](https://github.com/iamrita/currency_exchange/blob/main/sample_video.gif)
+![](https://github.com/iamrita/momence-coding-challenge/blob/main/sample_video.gif)
 
 
 Note: Although I have not used Typescript extensively, I am currently learning it on my own, and am excited to pick it up quickly!
