@@ -4,6 +4,7 @@ import "../App.css";
 
 function CurrencyExchange(props) {
   const [selectedOption, setSelectedOption] = useState("");
+  const [currCountry, setCurrCountry] = useState("")
   const [currAmount, setCurrAmount] = useState("");
   const [finalAmount, setFinalAmount] = useState("");
   const [clicked, setClicked] = useState(false);
@@ -19,6 +20,7 @@ function CurrencyExchange(props) {
   function calculate(currObj) {
     setClicked(true);
     const country = currObj.country;
+    setCurrCountry(country)
     const exchangeRate = props.currencies.find((c) => c.country === country);
     let exchangeAmount = exchangeRate.amount;
     let rate = exchangeRate.rate;
@@ -57,7 +59,7 @@ function CurrencyExchange(props) {
       {clicked ? (
         <div>
           <br></br>
-          Total in {selectedOption.value} is <b>{finalAmount}</b>
+          Total in {currCountry} is <b>{finalAmount}</b>
         </div>
       ) : (
         <></>
